@@ -1,0 +1,9 @@
+diff -Nupr src.orig/arch/x86/kvm/x86.c src/arch/x86/kvm/x86.c
+--- src.orig/arch/x86/kvm/x86.c	2025-11-20 16:07:40.998114439 -0300
++++ src/arch/x86/kvm/x86.c	2025-11-20 16:08:31.300782323 -0300
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0-only
++
+ /*
+  * Kernel-based Virtual Machine driver for Linux
+  *
