@@ -1,6 +1,6 @@
 diff -Nupr src.orig/fs/proc/array.c src/fs/proc/array.c
---- src.orig/fs/proc/array.c	2026-01-08 04:22:34.743439607 +0000
-+++ src/fs/proc/array.c	2026-01-08 04:34:50.659356566 +0000
+--- src.orig/fs/proc/array.c	2026-05-14 11:00:54.746746770 -0300
++++ src/fs/proc/array.c	2026-05-14 11:01:11.969796488 -0300
 @@ -403,12 +403,19 @@ static inline void task_seccomp(struct s
  	seq_putc(m, '\n');
  }
@@ -22,8 +22,8 @@ diff -Nupr src.orig/fs/proc/array.c src/fs/proc/array.c
  
  static void task_cpus_allowed(struct seq_file *m, struct task_struct *task)
 diff -Nupr src.orig/kernel/exit.c src/kernel/exit.c
---- src.orig/kernel/exit.c	2026-01-08 04:22:36.541439426 +0000
-+++ src/kernel/exit.c	2026-01-08 04:34:50.659356566 +0000
+--- src.orig/kernel/exit.c	2026-05-14 11:00:55.126968898 -0300
++++ src/kernel/exit.c	2026-05-14 11:01:11.970647851 -0300
 @@ -790,6 +790,7 @@ static void synchronize_group_exit(struc
  	spin_unlock_irq(&sighand->siglock);
  }
@@ -42,9 +42,9 @@ diff -Nupr src.orig/kernel/exit.c src/kernel/exit.c
  	 * Flush inherited counters to the parent - before the parent
  	 * gets woken up by child-exit notifications.
 diff -Nupr src.orig/kernel/fork.c src/kernel/fork.c
---- src.orig/kernel/fork.c	2026-01-08 04:22:36.541439426 +0000
-+++ src/kernel/fork.c	2026-01-08 04:34:50.660356566 +0000
-@@ -2802,6 +2802,7 @@ struct task_struct *create_io_thread(int
+--- src.orig/kernel/fork.c	2026-05-14 11:00:55.126968898 -0300
++++ src/kernel/fork.c	2026-05-14 11:01:11.971726719 -0300
+@@ -2799,6 +2799,7 @@ struct task_struct *create_io_thread(int
   *
   * args->exit_signal is expected to be checked for sanity by the caller.
   */
@@ -52,7 +52,7 @@ diff -Nupr src.orig/kernel/fork.c src/kernel/fork.c
  pid_t kernel_clone(struct kernel_clone_args *args)
  {
  	u64 clone_flags = args->flags;
-@@ -2810,6 +2811,8 @@ pid_t kernel_clone(struct kernel_clone_a
+@@ -2807,6 +2808,8 @@ pid_t kernel_clone(struct kernel_clone_a
  	struct task_struct *p;
  	int trace = 0;
  	pid_t nr;
@@ -61,7 +61,7 @@ diff -Nupr src.orig/kernel/fork.c src/kernel/fork.c
  
  	/*
  	 * For legacy clone() calls, CLONE_PIDFD uses the parent_tid argument
-@@ -2849,6 +2852,11 @@ pid_t kernel_clone(struct kernel_clone_a
+@@ -2846,6 +2849,11 @@ pid_t kernel_clone(struct kernel_clone_a
  	if (IS_ERR(p))
  		return PTR_ERR(p);
  
