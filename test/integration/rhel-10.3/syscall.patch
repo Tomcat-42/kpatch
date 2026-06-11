@@ -1,6 +1,6 @@
 diff -Nupr src.orig/kernel/sys.c src/kernel/sys.c
---- src.orig/kernel/sys.c	2026-06-09 23:11:24.871694446 -0400
-+++ src/kernel/sys.c	2026-06-09 23:12:07.037663989 -0400
+--- src.orig/kernel/sys.c	2026-06-11 14:52:09.057539055 -0400
++++ src/kernel/sys.c	2026-06-11 14:53:02.257869175 -0400
 @@ -1315,13 +1315,15 @@ static int override_release(char __user
  	return ret;
  }

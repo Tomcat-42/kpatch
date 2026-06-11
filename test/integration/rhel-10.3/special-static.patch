@@ -1,6 +1,6 @@
 diff -Nupr src.orig/kernel/fork.c src/kernel/fork.c
---- src.orig/kernel/fork.c	2026-06-09 23:11:24.856884421 -0400
-+++ src/kernel/fork.c	2026-06-09 23:12:00.192496288 -0400
+--- src.orig/kernel/fork.c	2026-06-11 14:52:09.048538989 -0400
++++ src/kernel/fork.c	2026-06-11 14:52:52.906743333 -0400
 @@ -1840,10 +1840,18 @@ static void posix_cpu_timers_init_group(
  	posix_cputimers_group_init(pct, cpu_limit);
  }
