@@ -1,6 +1,6 @@
 diff -Nupr src.orig/fs/proc/array.c src/fs/proc/array.c
---- src.orig/fs/proc/array.c	2026-06-11 14:52:11.512436957 -0400
-+++ src/fs/proc/array.c	2026-06-11 14:52:48.293359613 -0400
+--- src.orig/fs/proc/array.c	2026-06-17 17:26:03.056345150 -0400
++++ src/fs/proc/array.c	2026-06-17 17:26:47.344166904 -0400
 @@ -395,12 +395,19 @@ static inline void task_seccomp(struct s
  	seq_putc(m, '\n');
  }
@@ -22,9 +22,9 @@ diff -Nupr src.orig/fs/proc/array.c src/fs/proc/array.c
  
  static void task_cpus_allowed(struct seq_file *m, struct task_struct *task)
 diff -Nupr src.orig/kernel/exit.c src/kernel/exit.c
---- src.orig/kernel/exit.c	2026-06-11 14:52:09.048538989 -0400
-+++ src/kernel/exit.c	2026-06-11 14:52:48.293674824 -0400
-@@ -876,6 +876,7 @@ static void synchronize_group_exit(struc
+--- src.orig/kernel/exit.c	2026-06-17 17:26:06.007130089 -0400
++++ src/kernel/exit.c	2026-06-17 17:26:47.344497349 -0400
+@@ -877,6 +877,7 @@ static void synchronize_group_exit(struc
  	spin_unlock_irq(&sighand->siglock);
  }
  
@@ -32,7 +32,7 @@ diff -Nupr src.orig/kernel/exit.c src/kernel/exit.c
  void __noreturn do_exit(long code)
  {
  	struct task_struct *tsk = current;
-@@ -953,6 +954,8 @@ void __noreturn do_exit(long code)
+@@ -954,6 +955,8 @@ void __noreturn do_exit(long code)
  	sched_autogroup_exit_task(tsk);
  	cgroup_exit(tsk);
  
@@ -42,8 +42,8 @@ diff -Nupr src.orig/kernel/exit.c src/kernel/exit.c
  	 * FIXME: do that only when needed, using sched_exit tracepoint
  	 */
 diff -Nupr src.orig/kernel/fork.c src/kernel/fork.c
---- src.orig/kernel/fork.c	2026-06-11 14:52:09.048538989 -0400
-+++ src/kernel/fork.c	2026-06-11 14:52:48.294090957 -0400
+--- src.orig/kernel/fork.c	2026-06-17 17:26:06.007130089 -0400
++++ src/kernel/fork.c	2026-06-17 17:26:47.344906690 -0400
 @@ -2768,6 +2768,7 @@ struct task_struct *create_io_thread(int
   *
   * args->exit_signal is expected to be checked for sanity by the caller.
